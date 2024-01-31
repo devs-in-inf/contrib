@@ -167,7 +167,13 @@ func newGinHandler(rt *Trigger, method string, handler trigger.Handler) gin.Hand
 			}
 			out.Content = content
 		default:
-			http.Error(c.Writer, "unsupported contentType", http.StatusBadRequest)
+			b, err := io.ReadAll(c.Request.Body)
+			if err != nil {
+				logger.Debugf("Error reading body: %s", err.Error())
+				http.Error(c.Writer, err.Error(), http.StatusBadRequest)
+				return
+			}
+			out.Content = string(b)
 			return
 		}
 
