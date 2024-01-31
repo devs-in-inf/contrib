@@ -10,7 +10,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/project-flogo/core/data/metadata"
 	"github.com/project-flogo/core/support/log"
@@ -36,9 +35,9 @@ func (t *Trigger) Initialize(ctx trigger.InitContext) error {
 	t.logger = ctx.Logger()
 	addr := ":" + strconv.Itoa(t.settings.Port)
 
-	config := cors.DefaultConfig()
+	// config := cors.DefaultConfig()
 	router := gin.Default()
-	router.Use(cors.New(config))
+	// router.Use(cors.New(config))
 
 	for _, handler := range ctx.GetHandlers() {
 		s := &contrib.HandlerSettings{}
