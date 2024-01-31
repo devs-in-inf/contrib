@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/project-flogo/contrib/trigger/rest v0.10.0
-	github.com/project-flogo/core v1.6.8-rc.1.0.20240115071333-70a08c416803
+	github.com/project-flogo/core v1.6.7
 )
 
 require (
